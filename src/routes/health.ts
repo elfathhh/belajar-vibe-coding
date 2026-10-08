@@ -18,6 +18,8 @@ export const healthRoute = new Elysia({ prefix: "/health" }).get(
 
     return {
       status: "ok",
+      environment: process.env.NODE_ENV || "development",
+      uptime: `${process.uptime().toFixed(2)}s`,
       timestamp: new Date().toISOString(),
       database: {
         status: dbStatus,
